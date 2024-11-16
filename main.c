@@ -15,22 +15,13 @@ int main() {
 
     // Inicializa lebres
     for (int i = 0; i < NUM_LEBRES; i++) {
-        competidores[i].tipo = "Lebre";
-        competidores[i].id = i + 1;
-        competidores[i].posicao = 0;
-        competidores[i].velocidade = 3;
-        competidores[i].chance_descanso = 50; 
+        competidores[i] = (Competidor){"Lebre", i + 1, 0, 3, 50}; 
     }
 
     // Inicializa tartarugas
     for (int i = 0; i < NUM_TARTARUGAS; i++) {
-        competidores[NUM_LEBRES + i].tipo = "Tartaruga";
-        competidores[NUM_LEBRES + i].id = i + 1;
-        competidores[NUM_LEBRES + i].posicao = 0;
-        competidores[NUM_LEBRES + i].velocidade = 1;
-        competidores[NUM_LEBRES + i].chance_descanso = 0; 
+        competidores[NUM_LEBRES + i] = (Competidor){"Tartaruga", i + 1, 0, 1, 0}; 
     }
-
     // Cria threads
     for (int i = 0; i < total_competidores; i++) {
         pthread_create(&threads[i], NULL, correr, &competidores[i]);
