@@ -1,15 +1,16 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -pthread
-TARGET = corrida
-SRC = main.c threads.c
-HEADERS = threads.h
+CC=gcc
+CFLAGS=-I.
+DEPS = threads.h
+OBJ = main.o threads.o
+EXEC = main
 
-all: $(TARGET)
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(TARGET): $(SRC) $(HEADERS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+$(EXEC): $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
 
-	rm -f $(TARGET)
+.PHONY: clean
 
-run: all
-	./$(TARGET)
+clean:
+	rm -f $(EXEC) *.o *~ core
