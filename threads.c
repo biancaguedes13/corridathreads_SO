@@ -22,7 +22,7 @@ void *correr(void *arg) {
             competidor->distancia += competidor->velocidade;
             printf("%s %d correu para %d metros\n", competidor->tipo, competidor->id, competidor->distancia);
         } else {
-            printf("%s %d está descansando\n", competidor->tipo, competidor->id);
+            printf("%s %d esta descansando\n", competidor->tipo, competidor->id);
         }
 
         if (competidor->distancia >= DISTANCIA_TOTAL) {
@@ -31,7 +31,7 @@ void *correr(void *arg) {
         }
 
         pthread_mutex_unlock(&mutex);
-        usleep(50000); // Simula o tempo entre os ciclos
+        usleep(50000); 
     }
 
     return NULL;
