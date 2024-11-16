@@ -1,52 +1,10 @@
 #include <pthread.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <time.h>
+#include "threads.h"
 
-#define DISTANCIA_TOTAL 100
 #define NUM_COELHOS 2
 #define NUM_TARTARUGAS 2
-
-pthread_mutex_t mutex;
-int corrida_terminada = 0;
-
-typedef struct {
-    char *tipo;
-    int id;
-    int distancia;
-    int velocidade;
-    int descanso;
-} Competidor;
-
-void *correr(void *arg) {
-    Competidor *competidor = (Competidor *)arg;
-
-    while (!corrida_terminada) {
-        pthread_mutex_lock(&mutex);
-
-        if (corrida_terminada) {
-            pthread_mutex_unlock(&mutex);
-            break;
-        }
-
-        if (rand() % 100 >= competidor->descanso) {
-            competidor->distancia += competidor->velocidade;
-            printf("%s %d correu para %d metros\n", competidor->tipo, competidor->id, competidor->distancia);
-        } else {
-            printf("%s %d está descansando\n", competidor->tipo, competidor->id);
-        }
-
-        if (competidor->distancia >= DISTANCIA_TOTAL) {
-            corrida_terminada = 1;
-            printf("\n%s %d venceu a corrida!\n", competidor->tipo, competidor->id);
-        }
-
-        pthread_mutex_unlock(&mutex);
-        usleep(50000); // Simula o tempo entre os ciclos
-    }
-
-    return NULL;
-}
 
 int main() {
     srand(time(NULL));
