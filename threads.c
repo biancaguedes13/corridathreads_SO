@@ -18,7 +18,7 @@ void *correr(void *arg) {
             break;
         }
 
-        if (rand() % 100 >= competidor->chance_descanso) {
+        if (rand() % 100 >= competidor->chance_descanso) { //Se o numero gerado aleatoriamente for >= que a chance de descanso, lebre segue. caso contrario, descansa.
             competidor->distancia += competidor->velocidade;
             printf("%s %d correu para %d metros\n", competidor->tipo, competidor->id, competidor->distancia);
         } else {
