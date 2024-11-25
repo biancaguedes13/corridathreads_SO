@@ -1,2 +1,4 @@
 # corridathreads_SO
-Implementação de uma corrida de threads em C baseada na fábula da lebre e a tartaruga. Cada competidor possui diferentes características, como velocidade e probabilidade de descanso. O objetivo é simular e determinar o vencedor da corrida. UFSJ, Sistemas Operacionais - 2024/2
+Corrida de Threads. UFSJ, Sistemas Operacionais - 2024/2
+
+makefile incluso, para executar, use o comando make e depois ./main
