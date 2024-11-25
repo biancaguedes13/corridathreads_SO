@@ -15,7 +15,7 @@ int main() {
 
     // Inicializa lebres
     for (int i = 0; i < NUM_LEBRES; i++) {
-        competidores[i] = (Competidor){"Lebre", i + 1, 0, 3, 50}; 
+        competidores[i] = (Competidor){"Lebre", i + 1, 0, 2, 50}; 
     }
 
     // Inicializa tartarugas
